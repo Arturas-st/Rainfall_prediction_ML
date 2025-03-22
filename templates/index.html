@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainfall Prediction</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Rainfall Prediction</a>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h4>Predict Rainfall</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/predict" method="POST">
+                            <div class="mb-3">
+                                <label for="Temperature" class="form-label">Temperature:</label>
+                                <input type="number" step="0.1" class="form-control" name="Temperature" id="Temperature" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="Humidity" class="form-label">Humidity:</label>
+                                <input type="number" step="0.1" class="form-control" name="Humidity" id="Humidity" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Predict</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if prediction_result %}
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6">
+                <div class="alert alert-info text-center" role="alert">
+                    <strong>Prediction Result:</strong> {{ prediction_result }}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
